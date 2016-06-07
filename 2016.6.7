@@ -1,0 +1,37 @@
+  重新开始学java，感觉自己之前的基础还是不是很扎实。
+  
+  重学了interface，感觉之前对其的了解还不是太深入，
+  当出现多重继承的时候，java虚拟机并不喜欢有两个父类的情况出现，她会搞不清到底要用哪个继承版本，就是所谓“致命方块”，
+  为了解决“致命方块” 的存在，java出现了接口。她将全部的方法设为抽象的。
+  
+  接口的定义：
+      public interface Pet {...}  // 用"interface"取代"class"
+  
+  接口的实现：
+      public class Dog extends Canine implements Pet {...}  // 使用implements关键词。注意到实现interface时还是必须在某个类的继承之下。
+      
+  设计与实现Pet接口
+      public interface Pet {
+        public abstract void beFriendly();    // 接口方法带有public和abstract的意义，前缀其实不需要。
+        void Play();
+      }
+    -------------------------------------------------------------------------------------------------
+      public class Dog extends Canine implements Pet {
+        public void beFriendly() {...}
+        public void play() {...}    // 必须实现出Pet方法，这是合约规定
+        
+        public void roam() {...}    // 一般的覆盖方法
+        public void eat() {...}
+      }
+  
+  
+  当你用接口来作为多态类型时，对象就可以来自任何地方。唯一的条件就是该对象必须是来自有实现此接口的类。
+    而且类可以实现多个接口。
+      public class Dog extends Animal implements Pet, Saveable, paintable {...}
+  
+  extends 只有一个，implements可以有好多个。
+  
+  判断设计类， 子类， 抽象类或接口？
+    1.如果新的类无法对其他类通过IS-A测试，就设计不继承其他类的类。
+    2.只有在需要某类的特殊化版本时，以覆盖或增加新的方法来继承现有的类。
+    3.
